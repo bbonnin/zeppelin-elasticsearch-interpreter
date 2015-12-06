@@ -1,11 +1,27 @@
 # zeppelin-elasticsearch-interpreter
-Elasticsearch Interpreter for Appache Zeppelin
 
-Build
+Elasticsearch Interpreter for [Appache Zeppelin](https://zeppelin.incubator.apache.org/).
 
-Install
 
-in <ZEPPELIN HOME>/conf/zeppelin-site.xml, add the interpreter class:
+## Build
+It is a Maven project, so it's simple:
+```bash
+mvn clean package
+```
+
+## Install
+
+`ZEPPELIN_HOME` is your Zeppelin installation directory.
+
+* Create a directory  in <ZEPPELIN_HOME>/interpreters:
+```bash
+cd <ZEPPELIN_HOME>/interpreters
+mkdir elasticsearch
+```
+
+* Copy the jar of elasticsearch-interpreter in the directory `<ZEPPELIN_HOME>/interpreters/elasticsearch`.
+
+* In `<ZEPPELIN HOME>/conf/zeppelin-site.xml`, add the interpreter class:
 ```xml
 <property>
   <name>zeppelin.interpreters</name>
@@ -14,15 +30,7 @@ in <ZEPPELIN HOME>/conf/zeppelin-site.xml, add the interpreter class:
 </property>
 ```
 
-create a directory  in <ZEPPELIN_HOME>/interpreters:
-```bash
-cd <ZEPPELIN_HOME>/interpreters
-mkdir elasticsearch
-```
-
-copy the jar of elasticsearch-interpreter in the directory <ZEPPELIN_HOME>/interpreters/elasticsearch.
-
-start zeppelin
+* Start Zeppelin:
 ```bash
 <ZEPPELIN_HOME>/bin/zeppelin-daemon.sh start
 ```
