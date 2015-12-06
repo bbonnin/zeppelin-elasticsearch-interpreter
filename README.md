@@ -16,7 +16,7 @@ You should have a `elasticsearch-interpreter-jar-with-dependencies.jar` in the _
 
 `ZEPPELIN_HOME` is your Zeppelin installation directory.
 
-* Create a directory  in <ZEPPELIN_HOME>/interpreters:
+* Create a directory  in *<ZEPPELIN_HOME>/interpreters*:
 ```bash
 cd <ZEPPELIN_HOME>/interpreters
 mkdir elasticsearch
@@ -28,7 +28,7 @@ mkdir elasticsearch
 ```xml
 <property>
   <name>zeppelin.interpreters</name>
-  <value>io.millesabords.zeppelin.elasticsearch.ElasticsearchInterpreter,org.apache.zeppelin.spark.SparkInterpreter,...</value>
+  <value>__io.millesabords.zeppelin.elasticsearch.ElasticsearchInterpreter__,org.apache.zeppelin.spark.SparkInterpreter,...</value>
   <description>Comma separated interpreter configurations. First interpreter become a default</description>
 </property>
 ```
@@ -38,7 +38,23 @@ mkdir elasticsearch
 <ZEPPELIN_HOME>/bin/zeppelin-daemon.sh start
 ```
 
-Commands
+## How to use the interpreter
 
-Note : why 'commands' instead of using http methods ? Because, I think it's more easier to understand/write/maintain functionnal methods to create requests. And it's closer to the Java API that uses XXXRequest, where XXX is Count, Search or Delete.
+First, you have to configure the interpreter:
+![Config](/docs/images/config.png)
+
+In a paragraph, use `%els` to select the Elasticsearch interpreter and then input all commands.
+
+### get
+```bash
+| get /index/type/id
+```
+![Get](/docs/images/get.png)
+
+
+## Why 'commands' instead of using http methods ? 
+Because, I think it's more easier to understand/write/maintain functionnal methods to create requests. And it's closer to the Java API that uses XXXRequest, where XXX is Count, Search or Delete.
+
+
+
 
