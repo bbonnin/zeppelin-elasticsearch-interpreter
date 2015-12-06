@@ -28,3 +28,6 @@ start zeppelin
 ```
 
 Commands
+
+Note : why 'commands' instead of using http methods ? Because, I think it's more easier to understand/write/maintain functionnal methods to create requests. And it's closer to the Java API that uses XXXRequest, where XXX is Count, Search or Delete.
+
