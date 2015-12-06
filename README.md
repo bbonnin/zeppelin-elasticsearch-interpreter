@@ -16,7 +16,7 @@ You should have a `elasticsearch-interpreter-jar-with-dependencies.jar` in the _
 
 `ZEPPELIN_HOME` is your Zeppelin installation directory.
 
-* Create a directory  in *<ZEPPELIN_HOME>/interpreters*:
+* Create a directory  in <ZEPPELIN_HOME>/interpreters:
 ```bash
 cd <ZEPPELIN_HOME>/interpreters
 mkdir elasticsearch
@@ -59,23 +59,49 @@ With the `get` command, you can get a document.
 ```bash
 | get /index/type/id
 ```
+
 Example:
 ![Get](/docs/images/get.png)
 
 #### search
-With the `search` command, you can seach documents in Elasticsearch.
+With the `search` command, you can send a search query in Elasticsearch.
 ```bash
-| search /index1,index2,.../type1,type2,... <size of the response to limit the number of documents in the response> <JSON document containing the query>
+| search /index1,index2,.../type1,type2,... <size of the response> <JSON document containing the query>
 ```
+
 Example:
 * With a table containing the results:
 ![Search - table](/docs/images/search_table.png)
+
 * You can also use a predefined diagram:
 ![Search - table](/docs/images/search_pie.png)
 
+
+#### count
+With the `count` command, you can count documents in Elasticsearch.
+```bash
+| count /index1,index2,.../type1,type2,... 
+```
+
+Example:
+
+![Count](/docs/images/count.png)
+
+
+#### index
+With the `index` command, you can index a new document in Elasticsearch.
+```bash
+| index /index/type/id <JSON document>
+| index /index/type <JSON document>
+```
+
+#### get
+With the `delete` command, you can delete a document.
+
+```bash
+| delete /index/type/id
+```
+
+
 ### Why 'commands' instead of using http methods ? 
-Because, I think it's more easier to understand/write/maintain functionnal methods to create requests. And it's closer to the Java API that uses XXXRequest, where XXX is Count, Search or Delete.
-
-
-
-
+Because, I think it's more easier to understand/write/maintain commands than HTTP requests. And it's closer to the Java API that uses XXXRequest, where XXX is Count, Search or Delete.
