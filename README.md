@@ -2,12 +2,15 @@
 
 Elasticsearch Interpreter for [Appache Zeppelin](https://zeppelin.incubator.apache.org/).
 
+![Search pie](/docs/images/search_pie.png)
+
 
 ## Build
-It is a Maven project, so it's simple:
+It's a Maven project, so it's simple:
 ```bash
 mvn clean package
 ```
+You should have a `elasticsearch-interpreter-jar-with-dependencies.jar` in the _target_ directory. 
 
 ## Install
 
