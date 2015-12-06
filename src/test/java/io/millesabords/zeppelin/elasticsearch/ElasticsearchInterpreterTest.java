@@ -11,6 +11,7 @@ import java.util.Properties;
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.zeppelin.interpreter.InterpreterResult;
 import org.apache.zeppelin.interpreter.InterpreterResult.Code;
+import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
@@ -36,8 +37,11 @@ public class ElasticsearchInterpreterTest {
         client = TransportClient.builder().settings(settings).build()
                 .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));
         
+        client.admin().indices().delete(new DeleteIndexRequest("logs")).actionGet();
+        
         for (int i = 0; i < 50; i++) {
             client.prepareIndex("logs", "http", "" + i)
+                .setRefresh(true)
                 .setSource(jsonBuilder()
                         .startObject()
                             .field("date", new Date())
@@ -99,7 +103,7 @@ public class ElasticsearchInterpreterTest {
         InterpreterResult res = interpreter.interpret("index /logs { \"date\": \"" + new Date() + "\", \"method\": \"PUT\", \"status\": \"500\" }", null);
         assertEquals(Code.ERROR, res.code());
         
-        res = interpreter.interpret("index /logs/http { \"date\": \"" + new Date() + "\", \"method\": \"PUT\", \"status\": \"500\" }", null);
+        res = interpreter.interpret("index /logs/http { \"date\": \"2015-12-06T14:54:23.368Z\", \"method\": \"PUT\", \"status\": \"500\" }", null);
         assertEquals(Code.SUCCESS, res.code());
     }
     
