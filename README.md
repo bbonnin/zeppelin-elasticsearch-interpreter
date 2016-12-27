@@ -1,3 +1,6 @@
+## THIS REPO IS DEPRECATED (THIS PROJECT HAS BEEN MERGED)!! GO HERE, INSTEAD:  https://github.com/apache/zeppelin/tree/master/elasticsearch
+
+
 # zeppelin-elasticsearch-interpreter
 
 Elasticsearch Interpreter for [Appache Zeppelin](https://zeppelin.incubator.apache.org/).
